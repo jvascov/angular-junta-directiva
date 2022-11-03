@@ -1,0 +1,56 @@
+:host {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-in {
+  align-items: center;
+  justify-content: center;
+  background-color: whitesmoke;
+  width: 30%;
+  height: 50%;
+  display: flex;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 20%;
+}
+
+mat-form-field,
+.no-account {
+  margin: 10px;
+}
+
+@media screen and (max-width: 800px) {
+  :host {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .panel {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 10px;
+    background-color: transparent;
+  }
+
+  .sign-in {
+    align-items: center;
+    background-color: whitesmoke;
+    justify-content: center;
+    width: 100%;
+    display: flex;
+  }
+}

@@ -1,0 +1,9 @@
+<mat-selection-list [multiple]="false">
+  <mat-list-option
+    *ngFor="let item of menu"
+    [value]="item"
+    (click)="onClick(item)"
+  >
+    {{ item }}
+  </mat-list-option>
+</mat-selection-list>

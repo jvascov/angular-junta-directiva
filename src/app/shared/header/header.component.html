@@ -1,0 +1,25 @@
+<mat-toolbar color="primary">
+  <!-- <ng-container *ngIf="!isAdmin; else viewAdmin"> -->
+  <ng-content></ng-content>
+
+  <span><a [routerLink]="'/home'">Junta Propietarios</a></span>
+  <span class="spacer"></span>
+  <div class="">
+    <!-- <a *ngIf="isLoged; else viewLogout" mat-button [routerLink]="'/login'"></a> -->
+    <a mat-button (click)="texto.emit('texto')">Log-in</a>
+    <!-- <a mat-button [routerLink]="'/admin'">Admin</a> -->
+  </div>
+</mat-toolbar>
+
+<ng-template #viewAdmin>
+  <!-- <button mat-icon-button (click)="onToggleSidenav()"> -->
+  <button mat-icon-button>
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="spacer"></span>
+</ng-template>
+
+<ng-template #viewLogout>
+  <!-- <a *ngIf="authSvc.isLogged |async" mat-button (click)="logout()">Logout</a> -->
+  <a>Logout</a>
+</ng-template>
