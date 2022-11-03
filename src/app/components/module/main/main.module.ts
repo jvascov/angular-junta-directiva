@@ -13,6 +13,7 @@ import { VotacionesComponent } from '../../pages/votaciones/votaciones.component
 import { ResultadosComponent } from '../../pages/resultados/resultados.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PropietarioComponent } from '../../pages/propietarios/propietario/propietario.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const declarations = [
   MainComponent,
@@ -33,6 +34,7 @@ const declarations = [
     MainRoutingModule,
     AngularMaterialModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   exports: [MainComponent],
 })
