@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  domain: 'https://api-junta-prop.herokuapp.com/',
+  domain: 'https://api-junta-prop.herokuapp.com',
 };
 
 /*
