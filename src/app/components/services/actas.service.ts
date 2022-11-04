@@ -28,7 +28,7 @@ export class ActasService {
       Authorization: `Bearer ${this.token}`,
     });
 
-    return this.http.post<any>(this.url, body, {
+    return this.http.post<any>(this.url + '/actas', body, {
       headers: headers,
     });
   }
@@ -39,7 +39,7 @@ export class ActasService {
       Authorization: `Bearer ${this.token}`,
     });
 
-    return this.http.put<any>(this.url + '/' + id, body, {
+    return this.http.put<any>(this.url + '/actas/' + id, body, {
       headers: headers,
     });
   }
