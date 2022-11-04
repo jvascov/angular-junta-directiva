@@ -17,7 +17,7 @@ export class ActasService {
       Authorization: `Bearer ${this.token}`,
     });
 
-    return this.http.get<any>(this.url, {
+    return this.http.get<any>(this.url + '/actas', {
       headers: headers,
     });
   }

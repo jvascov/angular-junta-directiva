@@ -17,7 +17,7 @@ export class PropietariosService {
       Authorization: `Bearer ${token}`,
     });
 
-    return this.http.get<any>(this.url, {
+    return this.http.get<any>(this.url + '/propietarios', {
       headers: headers,
     });
   }
