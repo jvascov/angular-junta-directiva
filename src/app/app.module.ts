@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './shared/modules/angular-material.module';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthRoutingModule } from './components/module/auth/auth-routing.module';
+import { SharedModule } from './shared/shared.module';
 
 const imports = [
   BrowserModule,
@@ -18,6 +19,8 @@ const imports = [
   AuthModule,
   AngularMaterialModule,
   BrowserAnimationsModule,
+  SharedModule,
+  AuthRoutingModule,
 ];
 
 @NgModule({

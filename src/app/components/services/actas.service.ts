@@ -1,11 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ActasService {
-  url = 'http://localhost:8080/actas';
+  url = environment.domain;
   token = localStorage.getItem('token');
 
   constructor(private http: HttpClient) {}

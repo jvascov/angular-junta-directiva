@@ -2,11 +2,11 @@
   <!-- <ng-container *ngIf="!isAdmin; else viewAdmin"> -->
   <ng-content></ng-content>
 
-  <span><a [routerLink]="'/home'">Junta Propietarios</a></span>
+  <span><a>Junta Propietarios</a></span>
   <span class="spacer"></span>
   <div class="">
     <!-- <a *ngIf="isLoged; else viewLogout" mat-button [routerLink]="'/login'"></a> -->
-    <a mat-button (click)="texto.emit('texto')">Log-in</a>
+    <a mat-button *ngIf="!isAuth; else viewLogout"></a>
     <!-- <a mat-button [routerLink]="'/admin'">Admin</a> -->
   </div>
 </mat-toolbar>
@@ -21,5 +21,5 @@
 
 <ng-template #viewLogout>
   <!-- <a *ngIf="authSvc.isLogged |async" mat-button (click)="logout()">Logout</a> -->
-  <a>Logout</a>
+  <a mat-button (click)="logOut()">Log-out</a>
 </ng-template>

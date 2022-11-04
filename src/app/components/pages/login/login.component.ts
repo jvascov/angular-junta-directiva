@@ -2,7 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+const Swal = require('sweetalert2');
 
+export enum TYPE {
+  ERROR = 'error',
+  SUCCESS = 'success',
+  WARNING = 'warning',
+  INFO = 'info',
+  QUESTION = 'question',
+}
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,11 +20,8 @@ export class LoginComponent implements OnInit {
   private isValidEmail = /\S+@\S+\.\S+/;
   hide?: boolean = true;
   loginForm = this.formBuilder.group({
-    email: [
-      'jvascov@gmail.com',
-      [Validators.required, Validators.pattern(this.isValidEmail)],
-    ],
-    password: ['usr123456789', [Validators.required, Validators.minLength(5)]],
+    email: ['', [Validators.required, Validators.pattern(this.isValidEmail)]],
+    password: ['', [Validators.required, Validators.minLength(5)]],
   });
 
   constructor(
@@ -32,9 +37,29 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.authService.login();
+    let body = {
+      email: this.loginForm.get('email')?.value,
+      password: this.loginForm.get('password')?.value,
+    };
 
-    this.router.navigate(['dashboard']);
+    this.authService.login(body).subscribe((res: any) => {
+      if (res.token) {
+        localStorage.setItem('token', res.token);
+        this.router.navigateByUrl('/');
+      } else {
+        console.log('error usuario');
+
+        Swal.fire({
+          toast: true,
+          position: 'top',
+          showConfirmButton: false,
+          icon: TYPE.ERROR,
+          boolean: false,
+          timer: 5000,
+          title: 'Usuario o contraseña inválidos',
+        });
+      }
+    });
   }
 
   getErrorMessage(field: string) {

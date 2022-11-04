@@ -8,11 +8,14 @@ import { VotacionesComponent } from '../../pages/votaciones/votaciones.component
 import { ResultadosComponent } from '../../pages/resultados/resultados.component';
 import { PropietarioComponent } from '../../pages/propietarios/propietario/propietario.component';
 import { ActaComponent } from '../../pages/actas/acta/acta.component';
+import { AuthGuard } from '../../../guards/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: MainComponent,
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
     children: [
       {
         path: 'dashboard',

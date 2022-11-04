@@ -1,11 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PropietariosService {
-  url = 'http://localhost:8080/propietarios';
+  url = environment.domain;
 
   constructor(private http: HttpClient) {}
 
@@ -28,7 +29,7 @@ export class PropietariosService {
       Authorization: `Bearer ${token}`,
     });
 
-    return this.http.post<any>(this.url, body, {
+    return this.http.post<any>(this.url + '/propietarios', body, {
       headers: headers,
     });
   }
@@ -40,7 +41,7 @@ export class PropietariosService {
       Authorization: `Bearer ${token}`,
     });
 
-    return this.http.put<any>(this.url + '/' + id, body, {
+    return this.http.put<any>(this.url + '/propietarios/' + id, body, {
       headers: headers,
     });
   }

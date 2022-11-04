@@ -6,6 +6,11 @@ import { MainRoutingModule } from './components/module/main/main-routing.module'
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: '/dashboard',
+    pathMatch: 'full',
+  },
+  {
     path: '**',
     component: PageNotFoundComponent,
   },

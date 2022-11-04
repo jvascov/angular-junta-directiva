@@ -5,7 +5,6 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from '../../pages/login/login.component';
 import { AngularMaterialModule } from '../../../shared/modules/angular-material.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [LoginComponent],

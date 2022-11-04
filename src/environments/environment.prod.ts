@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  domain: 'https://api-junta-prop.herokuapp.com/',
 };
