@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PropietariosService } from '../../services/propietarios.service';
-import { CookieService } from 'ngx-cookie-service';
-import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+const Swal = require('sweetalert2');
 
 export interface PeriodicElement {
   id: string;
@@ -11,6 +10,14 @@ export interface PeriodicElement {
   email: string;
   role: string;
   opciones: string;
+}
+
+export enum TYPE {
+  ERROR = 'error',
+  SUCCESS = 'success',
+  WARNING = 'warning',
+  INFO = 'info',
+  QUESTION = 'question',
 }
 
 @Component({
@@ -48,17 +55,48 @@ export class PropietariosComponent implements OnInit {
             opciones: 'Eliminar',
           });
         }
-        console.log('prop', e);
       });
       this.dataSource = this.ELEMENT_DATA;
     });
   }
 
-  onClick(id: string) {
-    console.log('click', id);
-  }
-
   createPropietario() {
     this.router.navigate(['propietario']);
+  }
+
+  updatePropietario(id: string, type: string) {
+    let body;
+    if (type === 'eliminar') {
+      body = {
+        estado: 'inactivo',
+      };
+
+      this.propService.updatePropietario(id, body).subscribe((res: any) => {
+        if (res.success === true) {
+          this.ELEMENT_DATA = this.ELEMENT_DATA.filter((e) => e.id !== id);
+
+          this.dataSource = this.ELEMENT_DATA;
+          Swal.fire({
+            toast: true,
+            position: 'top',
+            showConfirmButton: false,
+            icon: TYPE.SUCCESS,
+            boolean: false,
+            timer: 5000,
+            title: 'Propietario eliminado exitosamente',
+          });
+        }
+      });
+    } else {
+      Swal.fire({
+        toast: true,
+        position: 'top',
+        showConfirmButton: false,
+        icon: TYPE.ERROR,
+        boolean: false,
+        timer: 5000,
+        title: 'Error eliminando propietario',
+      });
+    }
   }
 }

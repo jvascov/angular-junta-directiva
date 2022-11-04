@@ -5,6 +5,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class PropietariosService {
+  url = 'http://localhost:8080/propietarios';
+
   constructor(private http: HttpClient) {}
 
   getPropietarios() {
@@ -14,7 +16,31 @@ export class PropietariosService {
       Authorization: `Bearer ${token}`,
     });
 
-    return this.http.get<any>('http://localhost:8080/propietarios', {
+    return this.http.get<any>(this.url, {
+      headers: headers,
+    });
+  }
+
+  createPropietario(body: any) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.post<any>(this.url, body, {
+      headers: headers,
+    });
+  }
+
+  updatePropietario(id: string, body: any) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.put<any>(this.url + '/' + id, body, {
       headers: headers,
     });
   }
