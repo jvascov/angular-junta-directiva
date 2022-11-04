@@ -7,6 +7,7 @@ import { ActasComponent } from '../../pages/actas/actas.component';
 import { VotacionesComponent } from '../../pages/votaciones/votaciones.component';
 import { ResultadosComponent } from '../../pages/resultados/resultados.component';
 import { PropietarioComponent } from '../../pages/propietarios/propietario/propietario.component';
+import { ActaComponent } from '../../pages/actas/acta/acta.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,10 @@ const routes: Routes = [
       {
         path: 'actas',
         component: ActasComponent,
+      },
+      {
+        path: 'acta',
+        component: ActaComponent,
       },
       {
         path: 'votaciones',

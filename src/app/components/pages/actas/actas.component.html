@@ -1,1 +1,58 @@
-<p>actas works!</p>
+<mat-card>
+  <div class="button">
+    <button mat-raised-button color="primary" (click)="crearActa()">
+      Agregar Acta
+    </button>
+  </div>
+
+  <div class="actas" *ngIf="dataSource.length !== 0; else loggedOut">
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Fecha</th>
+          <th>Estado</th>
+          <th>Lugar</th>
+          <th>Administrador</th>
+          <th>Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="active-row" *ngFor="let item of dataSource; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ item.fecha }}</td>
+          <td>{{ item.estado }}</td>
+          <td>{{ item.lugar }}</td>
+          <td>{{ item.administrador }}</td>
+          <td>
+            <button
+              (click)="ejecutar(item.id, 'activa')"
+              mat-button
+              color="accent"
+            >
+              Activar
+            </button>
+            <button
+              (click)="ejecutar(item.id, 'cerrada')"
+              mat-button
+              color="primary"
+            >
+              Cerrar
+            </button>
+            <button
+              (click)="ejecutar(item.id, 'eliminada')"
+              mat-button
+              color="warn"
+            >
+              Eliminar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #loggedOut>
+    <p>No se encontraron actas registradas</p>
+  </ng-template>
+</mat-card>

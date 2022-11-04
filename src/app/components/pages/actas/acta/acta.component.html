@@ -1,0 +1,71 @@
+<mat-card>
+  <form [formGroup]="formulario" (ngSubmit)="crearActa()" novalidate>
+    <mat-form-field>
+      <input
+        class="input"
+        matInput
+        type="date"
+        matInput
+        placeholder="Fecha"
+        formControlName="fecha"
+        autocomplete="off"
+      />
+      <mat-error>
+        {{ getErrorMessage("fecha") }}
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        class="input"
+        matInput
+        type="text"
+        matInput
+        placeholder="Lugar"
+        formControlName="lugar"
+        autocomplete="off"
+      />
+      <mat-error>
+        {{ getErrorMessage("lugar") }}
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        class="input"
+        matInput
+        type="text"
+        placeholder="Estado"
+        autocomplete="off"
+        disabled
+        value="Registrada"
+      />
+
+      <mat-error>
+        {{ getErrorMessage("estado") }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        class="input"
+        matInput
+        type="text"
+        matInput
+        placeholder="Administrador"
+        formControlName="administrador"
+        autocomplete="off"
+      />
+      <mat-error>
+        {{ getErrorMessage("administrador") }}
+      </mat-error>
+    </mat-form-field>
+
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary"
+      [disabled]="formulario.invalid"
+    >
+      Crear Acta
+    </button>
+  </form>
+</mat-card>

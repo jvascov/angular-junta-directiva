@@ -9,6 +9,7 @@ import { AuthModule } from './components/module/auth/auth.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './shared/modules/angular-material.module';
 import { CookieService } from 'ngx-cookie-service';
+import { AuthRoutingModule } from './components/module/auth/auth-routing.module';
 
 const imports = [
   BrowserModule,

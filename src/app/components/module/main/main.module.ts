@@ -14,6 +14,7 @@ import { ResultadosComponent } from '../../pages/resultados/resultados.component
 import { HttpClientModule } from '@angular/common/http';
 import { PropietarioComponent } from '../../pages/propietarios/propietario/propietario.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ActaComponent } from '../../pages/actas/acta/acta.component';
 
 const declarations = [
   MainComponent,
@@ -25,6 +26,7 @@ const declarations = [
   VotacionesComponent,
   ResultadosComponent,
   PropietarioComponent,
+  ActaComponent,
 ];
 
 @NgModule({
@@ -36,6 +38,6 @@ const declarations = [
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  exports: [MainComponent],
+  exports: [declarations],
 })
 export class MainModule {}
